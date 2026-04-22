@@ -25,7 +25,7 @@ interface ProductsPageProps {
 export async function generateMetadata({
   searchParams,
 }: ProductsPageProps): Promise<Metadata> {
-  const params = await searchParams;
+  const params = (await searchParams) || {};
   const category = params.category;
   const query = params.query;
 
@@ -58,7 +58,7 @@ export async function generateMetadata({
 export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
-  const params = await searchParams;
+  const params = (await searchParams) || {};
 
   const filters: SearchFilters = {
     category: params.category,

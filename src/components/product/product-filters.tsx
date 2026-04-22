@@ -51,7 +51,7 @@ export default function ProductFilters({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const updateParams = (key: string, value: string | undefined) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString() || "");
     if (value) {
       params.set(key, value);
     } else {
@@ -63,7 +63,7 @@ export default function ProductFilters({
 
   const clearFilters = () => {
     const params = new URLSearchParams();
-    const query = searchParams.get("query");
+    const query = searchParams?.get("query");
     if (query) params.set("query", query);
     router.push(`/products?${params.toString()}`);
   };
@@ -170,13 +170,13 @@ export default function ProductFilters({
                 <button
                   onClick={() => {
                     if (isActive) {
-                      const params = new URLSearchParams(searchParams.toString());
+                      const params = new URLSearchParams(searchParams?.toString() || "");
                       params.delete("minPrice");
                       params.delete("maxPrice");
                       params.delete("page");
                       router.push(`/products?${params.toString()}`);
                     } else {
-                      const params = new URLSearchParams(searchParams.toString());
+                      const params = new URLSearchParams(searchParams?.toString() || "");
                       params.set("minPrice", String(range.min));
                       if (range.max !== undefined) {
                         params.set("maxPrice", String(range.max));
