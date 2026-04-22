@@ -1,0 +1,58 @@
+import { Category } from "@/types";
+
+export const categories: Category[] = [
+  {
+    id: "1",
+    name: "Electronics",
+    slug: "electronics",
+    description: "Latest gadgets, audio equipment, computers, and smart devices",
+    image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&q=80",
+    icon: "💻",
+    productCount: 847,
+  },
+  {
+    id: "2",
+    name: "Fashion",
+    slug: "fashion",
+    description: "Trending styles in clothing, footwear, and accessories",
+    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80",
+    icon: "👗",
+    productCount: 1234,
+  },
+  {
+    id: "3",
+    name: "Home & Garden",
+    slug: "home-garden",
+    description: "Furniture, décor, kitchen essentials, and outdoor living",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
+    icon: "🏠",
+    productCount: 653,
+  },
+  {
+    id: "4",
+    name: "Beauty",
+    slug: "beauty",
+    description: "Skincare, haircare, makeup, and wellness products",
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80",
+    icon: "✨",
+    productCount: 489,
+  },
+  {
+    id: "5",
+    name: "Sports",
+    slug: "sports",
+    description: "Fitness equipment, sportswear, and outdoor gear",
+    image: "https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?w=800&q=80",
+    icon: "⚽",
+    productCount: 376,
+  },
+  {
+    id: "6",
+    name: "Books",
+    slug: "books",
+    description: "Bestsellers, educational texts, and digital media",
+    image: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&q=80",
+    icon: "📚",
+    productCount: 2156,
+  },
+];
