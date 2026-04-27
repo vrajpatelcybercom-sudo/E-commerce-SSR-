@@ -17,6 +17,7 @@ import {
 import { useCartStore } from "@/store/cart-store";
 import { useDebounce, useMounted } from "@/hooks";
 import { cn } from "@/lib/utils";
+import { products } from "@/data";
 
 interface SearchResult {
   slug: string;
@@ -58,10 +59,20 @@ export default function Header() {
       setSearchResults([]);
       return;
     }
-    fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}`)
-      .then((r) => r.json())
-      .then((data) => setSearchResults(data.results || []))
-      .catch(() => setSearchResults([]));
+    const q = debouncedQuery.toLowerCase();
+    const results = products
+      .filter((p) =>
+        p.name.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+      )
+      .slice(0, 5)
+      .map((p) => ({
+        slug: p.slug,
+        name: p.name,
+        category: p.category,
+        price: p.price,
+      }));
+    setSearchResults(results);
   }, [debouncedQuery]);
 
   useEffect(() => {
@@ -207,33 +218,25 @@ export default function Header() {
                   <div className="p-3 border-b border-gray-100">
                     <p className="text-xs text-gray-500">Welcome</p>
                     <p className="text-sm font-semibold text-gray-900">
-                      Sign in to your account
+                      John Doe (Demo)
                     </p>
                   </div>
                   <div className="py-1">
-                    <Link
-                      href="/auth/login"
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
-                      onClick={() => setUserMenuOpen(false)}
-                    >
-                      <User className="w-4 h-4" />
-                      Sign In / Register
-                    </Link>
-                    <Link
-                      href="/dashboard/orders"
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
-                      onClick={() => setUserMenuOpen(false)}
-                    >
-                      <Package className="w-4 h-4" />
-                      My Orders
-                    </Link>
                     <Link
                       href="/dashboard"
                       className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
                       onClick={() => setUserMenuOpen(false)}
                     >
-                      <LogOut className="w-4 h-4" />
+                      <User className="w-4 h-4" />
                       My Account
+                    </Link>
+                    <Link
+                      href="#"
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
+                      onClick={() => setUserMenuOpen(false)}
+                    >
+                      <Package className="w-4 h-4" />
+                      My Orders
                     </Link>
                   </div>
                 </div>

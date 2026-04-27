@@ -12,21 +12,21 @@ const MENU_ITEMS = [
     icon: Package,
     label: "My Orders",
     description: "Track and manage your orders",
-    href: "/dashboard/orders",
+    href: "#",
     color: "bg-blue-50 text-blue-600",
   },
   {
     icon: User,
     label: "Profile",
     description: "Update your personal information",
-    href: "/dashboard/profile",
+    href: "#",
     color: "bg-indigo-50 text-indigo-600",
   },
   {
     icon: MapPin,
     label: "Addresses",
     description: "Manage your shipping addresses",
-    href: "/dashboard/profile",
+    href: "#",
     color: "bg-green-50 text-green-600",
   },
   {
@@ -47,7 +47,7 @@ const MENU_ITEMS = [
     icon: Settings,
     label: "Settings",
     description: "Account preferences and security",
-    href: "/dashboard/profile",
+    href: "#",
     color: "bg-gray-100 text-gray-600",
   },
 ];
